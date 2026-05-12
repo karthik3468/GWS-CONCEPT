@@ -292,6 +292,15 @@ button:focus-visible {
   padding-left: 0.1rem;
 }
 
+.concept-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.4rem;
+  padding-top: 1rem;
+  border-top: 1px solid #233d5f;
+}
+
 .concept-content hr {
   border: 0;
   border-top: 1px solid #233d5f;
@@ -427,6 +436,37 @@ tbody tr:nth-child(even) {
   font-size: 1.05rem;
 }
 
+.practice-form {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.practice-form label {
+  color: #67e8f9;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.practice-form textarea {
+  width: 100%;
+  min-height: 8rem;
+  resize: vertical;
+  border: 1px solid #233d5f;
+  border-radius: 8px;
+  background: #0b1323;
+  color: #e2e8f0;
+  font: inherit;
+  line-height: 1.55;
+  padding: 0.85rem;
+}
+
+.practice-form textarea:focus {
+  border-color: #14b8a6;
+  outline: 0;
+  box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.18);
+}
+
 .primary-action,
 .secondary-action,
 .success-action,
@@ -461,25 +501,56 @@ tbody tr:nth-child(even) {
   color: #fca5a5;
 }
 
+.your-answer,
 .quiz-answer {
   margin-bottom: 1.2rem;
-  border: 1px solid rgba(34, 197, 94, 0.28);
   border-radius: 8px;
-  background: rgba(5, 46, 22, 0.52);
   padding: 1rem;
 }
 
+.your-answer {
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  background: rgba(8, 47, 73, 0.32);
+}
+
+.your-answer > div,
 .quiz-answer > div {
   margin-bottom: 0.45rem;
-  color: #34d399;
   font-size: 0.72rem;
   font-weight: 800;
   text-transform: uppercase;
 }
 
+.your-answer > div {
+  color: #67e8f9;
+}
+
+.your-answer p {
+  margin: 0;
+  color: #cbd5e1;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.quiz-answer {
+  border: 1px solid rgba(34, 197, 94, 0.28);
+  background: rgba(5, 46, 22, 0.52);
+}
+
+.quiz-answer > div {
+  color: #34d399;
+}
+
 .quiz-answer p {
   margin: 0;
   color: #bbf7d0;
+}
+
+.practice-note {
+  color: #718096;
+  font-size: 0.86rem;
+  line-height: 1.6;
+  margin: -0.25rem 0 1rem;
 }
 
 .quiz-actions,
@@ -579,6 +650,7 @@ tbody tr:nth-child(even) {
     padding: 0.8rem;
   }
 
+  .concept-actions,
   .quiz-actions {
     flex-direction: column;
   }

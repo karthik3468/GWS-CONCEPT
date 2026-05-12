@@ -11,8 +11,8 @@ const sections = [
 - A **Flexible Plan** is month-to-month; you pay per active user and can add/remove anytime.
 - An **Annual Plan** locks in a fixed number of licenses for a full year at a lower per-user cost.
 - Each user needs their own license — multiple users cannot share one license.
-- A single user can hold multiple licenses (e.g., Business Starter + Google Vault).
-- **Cloud Identity** comes in Free and Premium tiers. The number of Cloud Identity users is tied to the number of GWS subscription users.
+- A single user can hold multiple licenses (for example, a Google Workspace edition plus Google Vault or Cloud Identity Premium).
+- **Cloud Identity** has Free and Premium tiers. Cloud Identity users still need accounts, and paid features depend on assigned licenses.
 
 **Adding Users:**
 You can add users in six ways:
@@ -21,15 +21,15 @@ You can add users in six ways:
 3. **Google Cloud Directory Sync (GCDS)** — syncs from LDAP/Active Directory
 4. **Admin SDK Directory API** — programmatic approach
 5. **Third-party tools**
-6. **CSV upload** — up to 1,50,000 records (max 35 MB). Requires a manual payment of $30 first to unlock bulk upload. After upload, the 'New licenses [upload only]' column in the template must be filled. Payment processing can take up to 72 hours.
+6. **CSV upload** — up to **150,000 users** in one file. If you use the **New Licenses [Upload Only]** column to assign or update licenses, that CSV is limited to **200 users**.
 
 **After Adding a User:**
 - New services (Gmail, Drive, etc.) take up to **24 hours** to activate. Before that, users see a 'No access' page.
-- The welcome email's password reset link is valid for **48 hours**. If expired, the admin must reset the password again.
+- Users created from a CSV file do **not** automatically receive a welcome email with credentials. Admins need to send credentials separately and can reset forgotten passwords in the Admin Console.
 
 **Troubleshooting:**
 - **Can't add a user?** → Check for available licenses and whether the username already exists.
-- **CSV file too large?** → Split into multiple files, each under 1,50,000 records and 35 MB.
+- **CSV file too large?** → Split into multiple files. Keep normal CSV uploads under 150,000 users, and keep license-update CSV files under 200 users.
 - **User limit exceeded?** → Verify you have sufficient licenses.
 
 **Special Account Types:**
@@ -44,19 +44,19 @@ You can add users in six ways:
       { q: "What is a flexible plan?", a: "A billing plan where you pay month-to-month per active user, with the ability to add or remove users at any time." },
       { q: "What is an annual plan?", a: "A billing plan where you commit to a fixed number of user licenses for a full year, typically at a lower per-user cost." },
       { q: "What do you need in order to use Google services like Gmail, Calendar, Drive etc.?", a: "A License." },
-      { q: "Can a user have multiple licenses?", a: "Yes — for example, Business Starter, Cloud Identity, Google Vault, etc." },
+      { q: "Can a user have multiple licenses?", a: "Yes — for example, a Google Workspace edition plus Cloud Identity Premium or Google Vault." },
       { q: "Can multiple users share one single Google Workspace license?", a: "No." },
-      { q: "What are the different ways to add users in the organization?", a: "Single user, multiple users (up to 10), Google Cloud Directory Sync, Admin SDK Directory API, a third-party tool, or a CSV file (up to 1,50,000 records)." },
+      { q: "What are the different ways to add users in the organization?", a: "Single user, multiple users manually, Google Cloud Directory Sync, Admin SDK Directory API, a third-party tool, or a CSV file. CSV user creation supports up to 150,000 users; CSV license assignment is limited to 200 users per file." },
       { q: "When a new user is added, how many hours will it take to get new services like Gmail, Drive etc.?", a: "24 hours. Accessing before that shows a 'No access' page." },
       { q: "Unable to add a user — what should you check?", a: "A. Check for available licenses. B. Check if the name already exists." },
-      { q: "The welcome email's password-reset link is valid for how many hours? What to do if it expires?", a: "Valid for 48 hours. If expired, the admin must reset the password again." },
-      { q: "What is the difference between normal subscriptions and Cloud Identity subscriptions?", a: "Cloud Identity has two types: Free and Premium. The number of Cloud Identity users depends on the number of users in the GWS subscription." },
-      { q: "Minimum requirements to add users in bulk using CSV?", a: "Manual payment equal to $30. This removes restrictions and allows purchasing AI Expanded Access. Manual payment will be applied to future invoices. Payment processing may take 72 hours." },
-      { q: "Where do you update the license information in the CSV file?", a: "After downloading the template file, fill in the 'New licenses [upload only]' column." },
+      { q: "Do users added from a CSV file receive a welcome email with credentials?", a: "No. If you create users from a CSV file, send their credentials separately. If the password is forgotten, reset it in the Admin Console." },
+      { q: "What is the difference between normal subscriptions and Cloud Identity subscriptions?", a: "Google Workspace licenses give access to Workspace services. Cloud Identity has Free and Premium tiers for identity and device/security management, and paid capabilities depend on assigned licenses." },
+      { q: "What is the CSV limit for bulk user creation and license assignment?", a: "CSV user creation supports up to 150,000 users. If assigning or updating licenses with the New Licenses [Upload Only] column, the CSV is limited to 200 users." },
+      { q: "Where do you update the license information in the CSV file?", a: "Use the 'New Licenses [Upload Only]' column and enter the license SKU ID. A CSV file can include up to 200 users when this column is used." },
       { q: "What is an unmanaged account?", a: "An account where the user we try to add in the Admin Console already has a personal Google account with the same username." },
       { q: "What are visitor accounts?", a: "If users invite people outside the organization who don't have Google accounts to collaborate on Drive, they receive visitor accounts in the format visitor's_username@your-company.com." },
       { q: "How to add users via CSV?", a: "A. Download the template file. B. Enter user information. C. Save the file as CSV. D. Upload the file in the Admin Console." },
-      { q: "Error: 'File is too large to upload' — what should you do?", a: "The CSV file cannot exceed 1,50,000 records or 35 MB. Split the data into two sheets and save each as a separate CSV file." },
+      { q: "Error: 'File is too large to upload' — what should you do?", a: "Split the data into separate CSV files. Keep normal user uploads under 150,000 users, and keep license-assignment uploads under 200 users." },
       { q: "Error: 'User limit exceeded' — what should you do?", a: "Check whether you have sufficient licenses before adding the users." },
       { q: "What is the Transfer Tool for Unmanaged Users?", a: "A tool to identify any unmanaged Google accounts and migrate those accounts to your domain." },
       { q: "Can 'POSTMASTER' be used as a username?", a: "No — it is a reserved word." },
@@ -71,7 +71,7 @@ You can add users in six ways:
     concept: `**Google Drive** is the cloud storage backbone of Google Workspace, shared across Drive, Gmail, and Photos.
 
 **Storage Types:**
-- **Pooled Storage** — all organization storage is shared among all users. To unlock the full pool, make a manual payment of $30 (takes up to 72 hours; adjusted in the next billing cycle).
+- **Pooled Storage** — organization storage is shared across users and calculated from the licenses in the subscription. Google grants pooled storage in stages: you get part of it at purchase, and the full storage limit is granted after a **$30 USD payment** for the subscription. Manual payment can speed this up, but the storage increase can still take up to **72 hours**.
 
 **Storage Limits by Edition:**
 | Edition | Storage |
@@ -92,13 +92,13 @@ You can add users in six ways:
 | Frontline Starter/Standard/Plus | 5 GB × users |
 | Non-Profits | 100 TB total |
 
-**Upload Limits:** A user can upload up to **750 GB per 24 hours**. My Drive can contain up to **5,00,000 items**.
+**Upload Limits:** A user can upload up to **750 GB per 24 hours**. A user's My Drive can contain up to **500 million items** they create, while a single folder can contain up to **500,000 items**.
 
 **Sharing & Access Controls:**
 - Default General access options: **Restricted** and **Your entire organization**.
 - **Trust Rules** — control who can access sensitive Docs, Sheets & Slides.
 - **Visitor Sharing** — share with non-Google accounts. They receive an email invite + PIN, valid for **7 days**; after that, a new invite must be sent.
-- **Shared Drives** — for external file sharing. Can have up to **50,000 individual members** and **5,00,000 items**.
+- **Shared Drives** — team-owned storage for shared files. A shared drive can have up to **50,000 individual members** and **500,000 items**.
 - To allow only certain OUs to share externally: turn off external sharing for the main OU, create a configuration group, add desired users, then enable external sharing for that group.
 - To turn off external sharing org-wide: Admin Console > Apps > GWS > Drive & Docs > Sharing options > External sharing: OFF.
 
@@ -131,12 +131,12 @@ You can add users in six ways:
 - **Custom Templates in Docs**: Enable via Admin Console > Apps > GWS > Drive & Docs > Templates.
 - **Transfer Ownership**: Admin Console > Apps > GWS > Drive & Docs > Transfer Ownership > specify From and To users.
 - **Google Workspace Storage vs Cloud Storage**: GWS storage is for files users frequently access/edit via Drive/Gmail/Photos. Cloud Storage is for developer-built systems that access files indirectly.
-- If a user account was deleted 2 days ago and a file was deleted: recover the deleted user from Admin Console (Recently deleted users) and the file restores automatically.
+- If a user was recently deleted, first restore the user from **Recently deleted users** when possible, then recover or transfer Drive data using the Admin Console recovery options.
 - **Gems** (Gemini custom assistants) are stored in Google Drive — Drive sharing settings apply to Gems.`,
     qna: [
       { q: "GWS storage is shared between which services?", a: "Drive + Gmail + Photos." },
       { q: "What is pooled storage?", a: "Storage shared among all users across the organization." },
-      { q: "How is pooled storage granted?", a: "Initially you get a portion of storage. To unlock full storage, make a manual payment of $30 for the subscription. It takes up to 72 hours and is adjusted in the next billing cycle." },
+      { q: "How is pooled storage granted?", a: "Google grants pooled storage in stages. You get part of the storage at purchase, and the full storage limit is granted after a $30 USD subscription payment. Manual payment can speed this up, but it can still take up to 72 hours." },
       { q: "Storage limits — Business Starter?", a: "30 GB × number of users. Total: up to 300 users + archived users." },
       { q: "Storage limits — Business Standard?", a: "2 TB × number of users. Total: up to 300 users + archived users." },
       { q: "Storage limits — Business Plus?", a: "5 TB × number of users. Total: up to 300 users + archived users." },
@@ -144,7 +144,7 @@ You can add users in six ways:
       { q: "Storage limits — GWS for Education Fundamentals & Standard?", a: "100 TB for all users." },
       { q: "Storage limits — Frontline Starter / Standard / Plus?", a: "5 GB × number of users." },
       { q: "How much can a user upload to Google Drive in 24 hours?", a: "750 GB." },
-      { q: "How many files/folders can My Drive contain?", a: "5,00,000 items." },
+      { q: "How many files/folders can My Drive contain?", a: "A user's My Drive can contain up to 500 million items they create. A single folder can contain up to 500,000 items." },
       { q: "How to access files offline?", a: "Enable offline access in Drive settings." },
       { q: "How to control who can access Google Docs, Sheets & Slides for sensitive data?", a: "Use Trust Rules." },
       { q: "Where are sharing settings for Google Gems managed?", a: "Gems are stored in Google Drive, so Drive sharing settings also apply to Gems." },
@@ -159,7 +159,7 @@ You can add users in six ways:
       { q: "If members are removed from a Shared Drive, what happens to files shared directly with them?", a: "They lose access." },
       { q: "If there is no manager or member in a Shared Drive, who can add managers?", a: "Super Administrators." },
       { q: "What are the access level permissions in a Shared Drive?", a: "Manager, Content Manager, Contributor, Commenter, and Viewer." },
-      { q: "How many items can a Shared Drive contain?", a: "5,00,000." },
+      { q: "How many items can a Shared Drive contain?", a: "500,000 items, including files, folders, shortcuts, and trashed items." },
       { q: "How long do deleted Shared Drives remain visible in the Admin Console?", a: "30 days." },
       { q: "If a Shared Drive is deleted, can it be restored?", a: "Yes, if deleted within the last 25 days." },
       { q: "How to restore a deleted Shared Drive?", a: "Admin Console > Apps > Google Workspace > Drive & Docs > Manage Shared Drives > Filter: Status = Deleted > point to the Shared Drive > Restore." },
@@ -169,7 +169,7 @@ You can add users in six ways:
       { q: "How to enable custom templates in Docs?", a: "Admin Console > Apps > GWS > Drive & Docs > Templates > Template Gallery settings > Enable custom templates for your organization > Save." },
       { q: "How to transfer ownership of a user's files to another user?", a: "Admin Console > Apps > GWS > Drive & Docs > Transfer Ownership > specify 'From' and 'To' users." },
       { q: "What is the difference between Google Drive storage and Google Cloud Storage?", a: "Google Workspace storage is best for files users access, edit, or collaborate on frequently via Drive, Gmail, or Photos. Cloud Storage is best for files accessed indirectly through a website or developer-built system." },
-      { q: "A user account was deleted 2 days ago and a file was also deleted — how to recover it?", a: "Recover the deleted user (Admin Console > Directory > Users > More options > Recently deleted users), and the file will be restored automatically." },
+      { q: "A user account was deleted 2 days ago and a file was also deleted — how to recover it?", a: "First restore the recently deleted user from Admin Console > Directory > Users > More options > Recently deleted users, then use Admin Console Drive recovery or transfer options as needed." },
       { q: "What is Streaming vs. Mirroring?", a: "Streaming requires an internet connection and stores content safely in the cloud. Mirroring does not require an internet connection and stores content in both the cloud and the hard drive." },
       { q: "Can a user with View-only permission apply classification labels to a file?", a: "No." },
       { q: "Can you change the field type after a label is published?", a: "No." },
@@ -188,7 +188,7 @@ You can add users in six ways:
 - The **primary domain** is the main identity of your organization — set during signup and cannot be deleted or easily changed.
 - Never use a temporary domain during signup, because whatever you choose becomes the permanent identity.
 - Domains containing the word **'gmail'** are rejected by Google to avoid confusion with Gmail branding.
-- Only the **primary domain** can have custom web addresses. Secondary domains cannot.
+- Custom service URLs can be created for the **primary domain and secondary domains**, but they must be configured separately for each domain.
 
 **Domain Types:**
 - **Primary Domain** — the permanent org identity
@@ -226,7 +226,7 @@ You can add users in six ways:
       { q: "How many logos can be configured across multiple domains?", a: "Only one logo is supported for all domains." },
       { q: "How can different policies be applied to users from different domains?", a: "By placing users into separate Organizational Units (OUs)." },
       { q: "Why is downtime required during domain merging?", a: "Because domains and services may be temporarily unavailable during the process." },
-      { q: "Can secondary domains have custom web addresses?", a: "No — only the primary domain can." },
+      { q: "Can secondary domains have custom web addresses?", a: "Yes. Custom service URLs can be created for primary and secondary domains, but each domain needs its own custom URL configuration." },
       { q: "How do you recover Play apps after merging domains?", a: "Create a new developer account and request app transfer." },
       { q: "Which data can be migrated using the migration service?", a: "Gmail, Calendar, and Drive data." },
       { q: "What must be done to old Workspace accounts before merging?", a: "Cancel subscriptions and delete the accounts." },
@@ -262,7 +262,7 @@ You can add users in six ways:
 - Manage membership automatically based on a **membership query**. To change members, change the query.
 - Only **users** can be members — other groups cannot be added, and Dynamic Groups cannot be members of another group.
 - Max **500 Dynamic Groups per customer** (can be increased by contacting support).
-- Only available in: **Enterprise Standard, Enterprise Plus, Enterprise for Education, Cloud Identity Premium**.
+- Supported editions include **Frontline Standard/Plus, Enterprise Standard/Plus, Education Standard/Plus, Enterprise Essentials Plus, and Cloud Identity Premium**.
 - Can only be created via **Admin Console or API** (not via the Google Groups UI).
 
 **Security Groups:**
@@ -304,7 +304,7 @@ You can add users in six ways:
       { q: "What is a Dynamic Group?", a: "A group that manages membership automatically based on a membership query. Members are added or removed automatically; to change members, you change the query." },
       { q: "What are the restrictions of Dynamic Groups?", a: "Only users can be members — groups cannot be added. Dynamic groups also cannot be members of another group." },
       { q: "How many Dynamic Groups can be created per customer?", a: "Up to 500. This limit can be increased on a case-by-case basis by contacting Google Workspace support." },
-      { q: "Which GWS editions support Dynamic Groups?", a: "Enterprise Standard, Enterprise Plus, Enterprise for Education, and Cloud Identity Premium." },
+      { q: "Which GWS editions support Dynamic Groups?", a: "Frontline Standard/Plus, Enterprise Standard/Plus, Education Standard/Plus, Enterprise Essentials Plus, and Cloud Identity Premium." },
       { q: "Where can Dynamic Groups and Configuration Groups be created?", a: "Only in the Admin Console or via the API (not in the Google Groups UI)." },
       { q: "What is a Security Group?", a: "A group with the Security label, used to control access to organizational resources. This action is permanent — it cannot be changed back to a regular group." },
       { q: "Can external (non-Google) accounts be added to a Security Group?", a: "No — the security practices of external providers cannot be verified." },
@@ -398,7 +398,7 @@ Calendar checks the work location of all invited guests and suggests the best ro
 
 **Mail Merge:**
 - Sends personalized emails using placeholders like @firstname.
-- Up to **1,500 recipients per message** and **2,000 emails per day**.
+- Up to **1,500 mail-merge recipients per day**. Each recipient counts toward Gmail sending limits.
 
 **Email Delivery & Routing:**
 - **Split Delivery** — sends mail to *either* Gmail or another mail server.
@@ -412,7 +412,7 @@ Calendar checks the work location of all invited guests and suggests the best ro
 
 **Email Security — SPF, DKIM, DMARC:**
 - All three protect against **email spoofing and phishing**.
-- From **February 2024**, Google requires senders to use SPF or DKIM. Bulk senders also need DMARC.
+- All senders to personal Gmail accounts must use **SPF or DKIM**. Bulk senders who send more than **5,000 messages per day** to personal Gmail accounts must use **SPF, DKIM, and DMARC**.
 
 **Gmail Delegation:**
 - Lets another user read and reply to your emails.
@@ -431,7 +431,7 @@ Calendar checks the work location of all invited guests and suggests the best ro
 - **Dynamic Group** — adds members automatically based on a query; cannot be added to another group`,
     qna: [
       { q: "What is Mail Merge in Gmail?", a: "Mail Merge lets you send personalized emails to many recipients at once, using placeholders like @firstname." },
-      { q: "What are the sending limits for Mail Merge?", a: "Up to 1,500 recipients per message and 2,000 emails per day." },
+      { q: "What are the sending limits for Mail Merge?", a: "Up to 1,500 mail-merge recipients per day. Each recipient counts toward Gmail sending limits." },
       { q: "A user updated MX records but still cannot receive emails — what could be the issue?", a: "The MX records may have been updated with the wrong DNS provider." },
       { q: "How long does DNS propagation take?", a: "Usually 1–72 hours." },
       { q: "What is the difference between Split Delivery and Dual Delivery?", a: "Split Delivery sends mail to either Gmail or another server. Dual Delivery sends a copy to both servers." },
@@ -441,7 +441,7 @@ Calendar checks the work location of all invited guests and suggests the best ro
       { q: "What is the difference between Mailing Group, Security Group, and Dynamic Group?", a: "Mailing Group sends emails to all members. Security Group controls resource access. Dynamic Group adds members automatically based on a query." },
       { q: "Can a Dynamic Group be added to another group?", a: "No — Dynamic Groups cannot be members of other groups." },
       { q: "What is the purpose of SPF, DKIM, and DMARC?", a: "They protect emails from spoofing and phishing attacks." },
-      { q: "What are Google's email authentication requirements from February 2024?", a: "Senders must use SPF or DKIM. Bulk senders also need DMARC." },
+      { q: "What are Google's email authentication requirements for senders to Gmail?", a: "All senders to personal Gmail accounts must use SPF or DKIM. Bulk senders over 5,000 messages per day must use SPF, DKIM, and DMARC." },
       { q: "What are the two main routing settings in Gmail?", a: "Default Routing (handles normal mail flow) and Routing (for special mail rules)." },
       { q: "What is a Content Compliance rule in Gmail?", a: "A rule that filters emails based on content or attachments." },
       { q: "Can admins set email signatures for all users?", a: "Yes — admins can add organization-wide signatures." },
@@ -495,8 +495,8 @@ Calendar checks the work location of all invited guests and suggests the best ro
 
 **Data Loss Prevention (DLP):**
 - Protects sensitive data from being shared outside the organization.
-- Actions DLP rules can take: **Block, Warn, or Quarantine** sensitive content.
-- Supported editions: **Business Plus and Enterprise**.
+- Common DLP outcomes include **audit/alert, warn users, or block sharing**. Gmail-related compliance/security rules can also quarantine messages.
+- Supported editions include **Frontline Standard/Plus, Enterprise Standard/Plus, Education Fundamentals/Standard/Plus, Teaching and Learning Upgrade, Enterprise Essentials Plus**, and some Cloud Identity Premium combinations with Workspace licenses.
 - Location: Admin Console > Security > Access and Data Control > Data Protection.
 - Rules can be tested in **test mode** before activation.
 
@@ -543,8 +543,8 @@ Calendar checks the work location of all invited guests and suggests the best ro
       { q: "What are API Controls?", a: "API Controls manage which third-party apps can access Google Workspace data." },
       { q: "Where are API Controls managed?", a: "Admin Console > Security > Access and Data Control > API Controls." },
       { q: "What is DLP in Google Workspace?", a: "DLP protects sensitive data from being shared outside the organization." },
-      { q: "What actions can DLP rules take?", a: "Block, warn, or quarantine sensitive content." },
-      { q: "Which editions support DLP?", a: "Business Plus and Enterprise editions." },
+      { q: "What actions can DLP rules take?", a: "Common DLP outcomes include audit or alert, warn users, or block sharing. Gmail-related compliance/security rules can also quarantine messages." },
+      { q: "Which editions support DLP?", a: "Supported editions include Frontline Standard/Plus, Enterprise Standard/Plus, Education Fundamentals/Standard/Plus, Teaching and Learning Upgrade, Enterprise Essentials Plus, and some Cloud Identity Premium combinations with Workspace licenses." },
       { q: "Where are DLP rules created?", a: "Admin Console > Security > Access and Data Control > Data Protection." },
       { q: "Can DLP rules be tested before activation?", a: "Yes — rules can run in test mode before becoming active." },
       { q: "What is an Activity Rule?", a: "An Activity Rule automatically takes action when specific events occur." },
@@ -569,11 +569,11 @@ Calendar checks the work location of all invited guests and suggests the best ro
     concept: `**Gemini** is Google's AI assistant deeply integrated into Google Workspace apps, and **Log Events** provide visibility into all admin and user activities.
 
 **Gemini in Google Workspace:**
-- Available in all plans, but features vary by plan.
+- Google Workspace plans now include access to Gemini features, but exact capabilities depend on subscription, admin settings, and feature availability.
 - **Three main parts:** Gemini in Workspace apps, Gemini App, and NotebookLM.
 - Managed at: Admin Console > Generative AI > Gemini for Workspace.
 - Can be controlled per OU or group.
-- **Gemini side panel access:** Full access available on Business Standard and higher.
+- **Gemini side panel access:** Available in supported Workspace services and editions, controlled by admins from Gemini for Workspace settings.
 
 **What Gemini Can Do Per App:**
 | App | Capability |
@@ -614,7 +614,7 @@ Calendar checks the work location of all invited guests and suggests the best ro
 **AI Expanded Access:**
 - Available for eligible Business and Enterprise plans.
 - Users see an **'Expanded' badge**.
-- Some US and Canada users can purchase it directly.
+- Purchase and self-service availability can vary by country, account type, and Workspace plan.
 - If a user hits their AI usage limit, they may be switched to a lower-speed model or must wait for reset.
 
 **Client-Side Encryption (CSE):**
@@ -636,7 +636,7 @@ Calendar checks the work location of all invited guests and suggests the best ro
 | SAML Audit | SAML app sign-ins |
 | OAuth Token Audit | Third-party app access to Google data |
 
-**Retention:** From **1 day up to 3,650 days**.
+**Retention:** From **1 day up to 3,650 days**, depending on log type and edition.
 **Export:** Can be exported to tools like **Splunk or BigQuery**.
 
 **Data Tools:**
@@ -654,7 +654,7 @@ Calendar checks the work location of all invited guests and suggests the best ro
 - **Assign role:** Open the role > assign users from Admin Roles section.`,
     qna: [
       { q: "What is Gemini in Google Workspace?", a: "Gemini is Google's AI assistant integrated into Workspace apps." },
-      { q: "Is Gemini included in all Google Workspace plans?", a: "Yes, but features vary by plan." },
+      { q: "Is Gemini included in Google Workspace plans?", a: "Google Workspace plans now include access to Gemini features, but exact capabilities depend on subscription, admin settings, and feature availability." },
       { q: "What are the main parts of Gemini?", a: "Gemini in Workspace apps, Gemini App, and NotebookLM." },
       { q: "What can Gemini do in Gmail?", a: "Draft emails and summarize email threads." },
       { q: "What can Gemini do in Google Docs?", a: "Create, summarize, and improve documents." },
@@ -668,7 +668,7 @@ Calendar checks the work location of all invited guests and suggests the best ro
       { q: "Can admins turn off the Gemini app?", a: "Yes — admins can disable access to the Gemini app." },
       { q: "Does Google use Workspace data to train Gemini AI?", a: "No — Workspace data is not used to train AI models." },
       { q: "What happens if Gmail is disabled in Workspace Intelligence?", a: "Some Gmail AI features may stop working." },
-      { q: "Which editions provide full Gemini side panel access?", a: "Business Standard and higher editions." },
+      { q: "How is Gemini side panel access controlled?", a: "Admins manage Gemini features and side panel access from Admin Console > Generative AI > Gemini for Workspace. Availability depends on the Workspace edition." },
       { q: "What is a Gem in the Gemini app?", a: "A Gem is a custom AI assistant for specific tasks." },
       { q: "How can admins review Gemini usage?", a: "Through Admin Console reports and the Reports API." },
       { q: "What is Client-Side Encryption (CSE)?", a: "CSE encrypts data so even Google and Gemini cannot access it." },
@@ -690,7 +690,7 @@ Calendar checks the work location of all invited guests and suggests the best ro
       { q: "What does the User Log Events track?", a: "Password changes and recovery detail updates." },
       { q: "What does the SAML Audit log track?", a: "SAML app sign-ins." },
       { q: "What does the OAuth Token Audit log track?", a: "Third-party app access to Google data." },
-      { q: "How long can log events be retained?", a: "From 1 day up to 3,650 days." },
+      { q: "How long can log events be retained?", a: "From 1 day up to 3,650 days, depending on the log type and edition." },
       { q: "Can log events be exported to external tools?", a: "Yes — they can be exported to tools like Splunk or BigQuery." },
       { q: "What is the Super Admin role?", a: "Super Admin has full control over Google Workspace settings and users." },
       { q: "Give examples of pre-built admin roles.", a: "User Management Admin, Groups Admin, and Help Desk Admin." },
@@ -716,7 +716,7 @@ Calendar checks the work location of all invited guests and suggests the best ro
 
 **Who Can Purchase:**
 - Admins can assign it through the Admin Console.
-- Some users in the **US and Canada** can purchase it directly themselves.
+- Purchase and self-service availability can vary by country, account type, and Workspace plan.
 
 **User Experience:**
 - Users with AI Expanded Access see an **'Expanded' badge**.
@@ -731,7 +731,7 @@ Calendar checks the work location of all invited guests and suggests the best ro
       { q: "What advanced AI features are included in AI Expanded Access?", a: "Advanced image generation, video generation, Workspace Studio, and higher Gemini limits." },
       { q: "How does an admin assign AI Expanded Access to users?", a: "Admins assign it through the Admin Console." },
       { q: "What badge do users see with AI Expanded Access?", a: "Users see an 'Expanded' badge." },
-      { q: "Can users purchase AI Expanded Access themselves?", a: "Yes — some users in the US and Canada can purchase it directly." },
+      { q: "Can users purchase AI Expanded Access themselves?", a: "Self-service purchase availability can vary by country, account type, and Workspace plan. Admin assignment through the Admin Console is the safest answer for managed domains." },
       { q: "What are the three Gemini AI access tiers?", a: "Standard AI, AI Expanded Access, and AI Ultra Access." },
       { q: "What happens if a user reaches their AI usage limit?", a: "Users may be switched to a lower-speed model or must wait for limits to reset." },
       { q: "What is the difference between AI Expanded Access and AI Ultra Access?", a: "Expanded Access gives higher AI limits; Ultra Access provides the highest AI capabilities." },
@@ -980,6 +980,7 @@ export default function App() {
   const [mode, setMode] = useState("concept");
   const [revealedAnswers, setRevealedAnswers] = useState({});
   const [quizIndex, setQuizIndex] = useState(0);
+  const [quizDraft, setQuizDraft] = useState("");
   const [quizRevealed, setQuizRevealed] = useState(false);
   const [quizScore, setQuizScore] = useState({ correct: 0, total: 0 });
   const [quizDone, setQuizDone] = useState(false);
@@ -995,6 +996,7 @@ export default function App() {
   const resetStudyState = () => {
     setRevealedAnswers({});
     setQuizIndex(0);
+    setQuizDraft("");
     setQuizRevealed(false);
     setQuizScore({ correct: 0, total: 0 });
     setQuizDone(false);
@@ -1023,6 +1025,7 @@ export default function App() {
     };
 
     setQuizScore(newScore);
+    setQuizDraft("");
     if (quizIndex + 1 >= section.qna.length) {
       setQuizDone(true);
     } else {
@@ -1078,7 +1081,7 @@ export default function App() {
             {[
               ["concept", "📖 Concept"],
               ["all-qna", "📝 Q&A"],
-              ["quiz", "🎯 Quiz"],
+              ["quiz", "Answer Practice"],
             ].map(([value, label]) => (
               <button
                 className={`mode-button ${mode === value ? "is-active" : ""}`}
@@ -1099,6 +1102,14 @@ export default function App() {
             <section className="panel concept-panel" aria-labelledby="concept-title">
               <div className="panel-kicker" id="concept-title">Core Concept</div>
               <ConceptRenderer text={section.concept} />
+              <div className="concept-actions">
+                <button className="primary-action" onClick={() => switchMode("quiz")} type="button">
+                  Answer all questions
+                </button>
+                <button className="secondary-action" onClick={() => switchMode("all-qna")} type="button">
+                  Open Q&A review
+                </button>
+              </div>
             </section>
           )}
 
@@ -1124,7 +1135,7 @@ export default function App() {
           )}
 
           {mode === "quiz" && !quizDone && (
-            <section className="quiz-shell" aria-label={`${section.title} quiz`}>
+            <section className="quiz-shell" aria-label={`${section.title} answer practice`}>
               <div className="quiz-meta">
                 <span>Question {quizIndex + 1} of {section.qna.length}</span>
                 <span>{quizScore.correct} correct</span>
@@ -1142,15 +1153,36 @@ export default function App() {
                 <p className="quiz-question">{quizQ.q}</p>
 
                 {!quizRevealed ? (
-                  <button className="primary-action" onClick={() => setQuizRevealed(true)} type="button">
-                    Reveal Answer
-                  </button>
+                  <form
+                    className="practice-form"
+                    onSubmit={(event) => {
+                      event.preventDefault();
+                      setQuizRevealed(true);
+                    }}
+                  >
+                    <label htmlFor={`practice-answer-${section.id}-${quizIndex}`}>Your answer</label>
+                    <textarea
+                      id={`practice-answer-${section.id}-${quizIndex}`}
+                      value={quizDraft}
+                      onChange={(event) => setQuizDraft(event.target.value)}
+                      placeholder="Type your answer from memory, then check it."
+                      rows={5}
+                    />
+                    <button className="primary-action" type="submit">
+                      Check answer
+                    </button>
+                  </form>
                 ) : (
                   <div>
+                    <div className="your-answer">
+                      <div>Your answer</div>
+                      <p>{quizDraft.trim() || "No answer typed."}</p>
+                    </div>
                     <div className="quiz-answer">
-                      <div>Answer</div>
+                      <div>Reference answer</div>
                       <p>{quizQ.a}</p>
                     </div>
+                    <p className="practice-note">Compare your answer with the reference, then mark yourself honestly.</p>
 
                     <div className="quiz-actions">
                       <button className="success-action" onClick={() => handleQuizAnswer(true)} type="button">
@@ -1190,6 +1222,7 @@ export default function App() {
                   className="primary-action"
                   onClick={() => {
                     setQuizIndex(0);
+                    setQuizDraft("");
                     setQuizRevealed(false);
                     setQuizScore({ correct: 0, total: 0 });
                     setQuizDone(false);
