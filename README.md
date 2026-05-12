@@ -11,7 +11,13 @@ npm run dev
 
 ## Deploy On GitHub Pages
 
-1. Push this repository to GitHub.
-2. In the GitHub repository, open `Settings > Pages`.
-3. Set `Build and deployment > Source` to `GitHub Actions`.
-4. Push to `main` or `master`. The workflow in `.github/workflows/deploy.yml` builds the app and publishes `dist`.
+The live site is published from the repository root for compatibility with the current GitHub Pages setting.
+
+To update the live files after changing the app:
+
+```bash
+npm run build
+Copy-Item -Recurse -Force dist\* .
+```
+
+The GitHub Actions workflow also builds and uploads `dist` if Pages is later switched to `GitHub Actions`.
